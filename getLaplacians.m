@@ -1,9 +1,9 @@
-function [laplacians,gaussians] = getLaplacians(I,levels,hsize,sigma)
+function [laplacians,gaussians] = getLaplacians(I,levels,sigma)
     gaussians = {I};
     laplacians = {I};
     for i=2:1:levels
-        filter = fspecial('gaussian', hsize, sigma);
-        gaussians{i} = imfilter(gaussians{i-1},filter); 
+        sigma = sigma * 2;
+        gaussians{i} = imgaussfilt(gaussians{1}, sigma); 
         laplacians{i-1} = gaussians{i-1}-gaussians{i};
     end
 end

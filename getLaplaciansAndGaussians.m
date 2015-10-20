@@ -1,4 +1,4 @@
-function [laplacians,gaussians] = getLaplacians(I,levels,sigma)
+function [laplacians,gaussians] = getLaplaciansAndGaussians(I,levels,sigma)
     gaussians = {I};
     laplacians = {I};
     for i=2:1:levels

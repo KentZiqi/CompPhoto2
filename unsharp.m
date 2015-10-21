@@ -1,7 +1,7 @@
-function image = unsharp(image_name,gamma,hsize,sharpen_index)
+function image = unsharp(image_name,sigma,hsize,sharpen_index)
     figure
     I = im2double(imread(image_name));
-    h = fspecial('gaussian', hsize, gamma);
+    h = fspecial('gaussian', hsize, sigma);
     J = imfilter(I,h);
     image = I + sharpen_index*(I-J);
     
@@ -11,4 +11,5 @@ function image = unsharp(image_name,gamma,hsize,sharpen_index)
     imshow(J)
     subplot(1,3,3)
     imshow(image)
+    imwrite(image, 'sharp.jpg')
 end
